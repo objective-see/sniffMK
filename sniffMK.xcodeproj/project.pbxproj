@@ -23,8 +23,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7D5FBE621F456C60000AA95B /* sniffMK */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = sniffMK; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DFDDA181F4796B3001A0257 /* sniffMK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = sniffMK.m; path = sniffMK/sniffMK.m; sourceTree = SOURCE_ROOT; };
+		7DFDDA1C1F479897001A0257 /* sniffMK */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = sniffMK; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,26 +41,25 @@
 		7D5FBE591F456C60000AA95B = {
 			isa = PBXGroup;
 			children = (
-				7D5FBE641F456C60000AA95B /* sniffMK */,
-				7D5FBE631F456C60000AA95B /* Products */,
+				7DFDDA1D1F4798A5001A0257 /* src */,
+				7DFDDA1B1F479897001A0257 /* bin */,
 			);
 			sourceTree = "<group>";
 		};
-		7D5FBE631F456C60000AA95B /* Products */ = {
+		7DFDDA1B1F479897001A0257 /* bin */ = {
 			isa = PBXGroup;
 			children = (
-				7D5FBE621F456C60000AA95B /* sniffMK */,
+				7DFDDA1C1F479897001A0257 /* sniffMK */,
 			);
-			name = Products;
+			path = bin;
 			sourceTree = "<group>";
 		};
-		7D5FBE641F456C60000AA95B /* sniffMK */ = {
+		7DFDDA1D1F4798A5001A0257 /* src */ = {
 			isa = PBXGroup;
 			children = (
 				7DFDDA181F4796B3001A0257 /* sniffMK.m */,
 			);
-			name = sniffMK;
-			path = "sniffM&K";
+			name = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -73,6 +72,7 @@
 				7D5FBE5E1F456C60000AA95B /* Sources */,
 				7D5FBE5F1F456C60000AA95B /* Frameworks */,
 				7D5FBE601F456C60000AA95B /* CopyFiles */,
+				7DFDDA1A1F47987C001A0257 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -80,7 +80,7 @@
 			);
 			name = sniffMK;
 			productName = "sniffM&K";
-			productReference = 7D5FBE621F456C60000AA95B /* sniffMK */;
+			productReference = 7DFDDA1E1F479967001A0257 /* sniffMK */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -107,7 +107,7 @@
 				en,
 			);
 			mainGroup = 7D5FBE591F456C60000AA95B;
-			productRefGroup = 7D5FBE631F456C60000AA95B /* Products */;
+			productRefGroup = 7D5FBE591F456C60000AA95B;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -115,6 +115,22 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7DFDDA1A1F47987C001A0257 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#move binary into top-level bin/ folder\nmv \"$CODESIGNING_FOLDER_PATH\" \"$SRCROOT/bin/\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7D5FBE5E1F456C60000AA95B /* Sources */ = {
