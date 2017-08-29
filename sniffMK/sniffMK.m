@@ -25,6 +25,9 @@
 #import <Foundation/Foundation.h>
 #import <ApplicationServices/ApplicationServices.h>
 
+//event tap
+static CFMachPortRef eventTap = NULL;
+
 //map a printable keycode to a string
 // ->code based on: https://stackoverflow.com/a/33584460
 NSString* keyCodeToString(CGEventRef event, CGEventType type)
@@ -240,7 +243,13 @@ CGEventRef eventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef eve
         case kCGEventKeyUp:
             printf("key up\n");
             break;
-            
+        
+        // event tap timeout
+        case kCGEventTapDisabledByTimeout:
+            CGEventTapEnable(eventTap, true);
+            printf("Event tap timed out: restarting tap");
+            return event;
+        
         default:
             printf("unknown (%d)\n", type);
     }
@@ -281,9 +290,6 @@ CGEventRef eventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef eve
 // ->parse args, then sniff (forever)
 int main(int argc, const char * argv[])
 {
-    //event tap
-    CFMachPortRef eventTap = NULL;
-    
     //event mask
     // ->events to sniff
     CGEventMask eventMask = 0;
